@@ -2,8 +2,8 @@ ID = "QUIT"
 
 def execute(self, sendMsg, prefix, command, params):
     print "SOMEBODY LEFT SERVER:"
-    print prefix
-    print params
+    print prefix.encode("ascii", "replace")
+    print params.encode("ascii", "replace")
     
     part1 = prefix.partition("!")
     part2 = part1[2].partition("@")
@@ -14,9 +14,9 @@ def execute(self, sendMsg, prefix, command, params):
     
     quitReason = params[1:]
     print "SERVER LEAVE"
-    print name, ident, host
-    print quitReason
-    
+    print name.encode("ascii", "replace"), ident.encode("ascii", "replace"), host.encode("ascii", "replace")
+    print quitReason.encode("ascii", "replace")
+
     self.events["userquit"].tryAllEvents(self, name, ident, host, quitReason)
     
     for chan in self.channelData:
