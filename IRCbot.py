@@ -130,7 +130,7 @@ class IRC_Main():
             
             
             
-            time.sleep(0.0012)
+            time.sleep(0.05)
             
         self.__root_logger__.info("Main loop has been stopped")
         self.readThread.ready = False
